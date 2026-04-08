@@ -5,10 +5,10 @@ import {ref} from 'vue';
 
 const dice = ref({
     1: 1,
-    2: 2,
-    3: 5,
-    4: 1,
-    5: 6,
+    2: 1,
+    3: 1,
+    4: 2,
+    5: 2,
 });
 </script>
 
