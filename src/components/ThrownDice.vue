@@ -1,9 +1,14 @@
 <template>
-    <li v-for="(item, index) in dice" :key="index">
-        <!-- TODO display the dicevalues nicer than this -->
-        Dice
-        {{ item }}
-    </li>
+    <table class="table1">
+        <th colspan="5">Dice values</th>
+        <tr>
+            <td v-for="(item, index) in dice" :key="index">
+                <!-- TODO display the dicevalues nicer than this -->
+                Dice:
+                {{ item }}
+            </td>
+        </tr>
+    </table>
     <button @click="throwDice()">Gooi!</button>
 </template>
 <script setup>

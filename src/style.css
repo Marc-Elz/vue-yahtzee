@@ -1,4 +1,15 @@
-table{
+table.table1{
+    border-collapse: collapse;
+    width: 500px;
+    background-color: bisque;
+}
+
+table.table2{
+    border-collapse: collapse;
+    width: 200px;
+}
+
+table.table3{
     border-collapse: collapse;
     width: 200px;
 }
@@ -9,7 +20,7 @@ tr, td{
 }
 
 th{
-    background-color: rgb(42, 235, 219);
+    background-color: rgb(227, 138, 30)
 }
 
 button{
