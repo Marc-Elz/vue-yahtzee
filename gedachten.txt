@@ -5,3 +5,8 @@ Moet voorkomen dat ik telkens iets bereken zonder dat de variabelen veranderd zi
 Issue 2: Css van tables kan beter met minimale veranderingen
 
 Issue 3: Dobbelstenen op het begin leeg laten. N/A
+
+Jasper end of day tip:
+Object.entries word vaak herhaald. Ik moet kijken of ik dat kan vermijden. 
+
+Als ik er niet zelf uitkom, tip om datde volgende keer maar vragen
