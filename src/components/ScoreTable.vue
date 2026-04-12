@@ -119,8 +119,7 @@ const calculateAllEyes = computed(() => {
 // Nog niet blij met de duplicatecode, maar probleem voor later
 const determine3OAK = computed(() => {
     let found = false
-    Object.entries(countDices.value).forEach(([key, value]) => {
-        // Seems like it does not return when hit.
+    Object.values(countDices.value).forEach((value) => {
         if(value === 3){
             found = true;
         }
@@ -131,7 +130,7 @@ const determine3OAK = computed(() => {
 
 const determine4OAK = computed(() => {
     let found = false
-    Object.entries(countDices.value).forEach(([key, value]) => {
+    Object.values(countDices.value).forEach((value) => {
         if(value === 4){
             found = true;
         }
@@ -145,7 +144,7 @@ const handleFullHouse = computed(() => {
     let threePair = false;
     let twoPair = false;
 
-    Object.entries(countDices.value).forEach(([key, value]) => {
+    Object.values(countDices.value).forEach((value) => {
         if (value === 3) {
             threePair = true
         }
@@ -208,7 +207,7 @@ const handleStraight = (requiredSize) => {
 
 const handleYahtZee = computed(() => {
     let foundYahtzee = false
-    Object.entries(countDices.value).forEach(([key, value]) => {
+    Object.values(countDices.value).forEach((value) => {
         if (value === 5) {
             foundYahtzee = true;
             return 50;
