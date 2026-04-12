@@ -3,13 +3,8 @@ import ScoreTable from './components/ScoreTable.vue';
 import ThrownDice from './components/ThrownDice.vue';
 import {ref} from 'vue';
 
-const dice = ref({
-    1: 1,
-    2: 1,
-    3: 1,
-    4: 2,
-    5: 2,
-});
+// Better make the dice object an array
+const dice = ref([1, 1, 1, 2, 2]);
 </script>
 
 <template>

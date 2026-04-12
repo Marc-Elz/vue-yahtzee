@@ -4,7 +4,6 @@
         <tr>
             <td v-for="(item, index) in dice" :key="index">
                 <!-- TODO display the dicevalues nicer than this -->
-                Dice:
                 {{ item }}
             </td>
         </tr>
@@ -15,6 +14,6 @@
 const dice = defineModel();
 
 const throwDice = () => {
-    dice.value = Object.fromEntries(Object.keys(dice.value).map(key => [key, Math.floor(Math.random() * 6) + 1]));
+    dice.value = dice.value.map(() => Math.floor(Math.random() * 6) + 1);
 };
 </script>

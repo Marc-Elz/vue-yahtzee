@@ -99,10 +99,9 @@ import {ref, computed} from 'vue';
 const dice = defineModel();
 const countDices = computed(() => {
     let count = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0};
-    Object.keys(dice.value).forEach(element => {
-        count[dice.value[element]]++;
-    });
-
+    dice.value.forEach(die => {
+        count[die]++
+    })
     return count;
 });
 
