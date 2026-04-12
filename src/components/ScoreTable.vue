@@ -35,43 +35,43 @@
             <td>Three of a kind</td>
             <td>3 dezelfde</td>
             <td>Totaal v.d. 5 stenen</td>
-            <td class="part-2">{{ determine3OAK }}</td>
+            <td>{{ determine3OAK }}</td>
         </tr>
         <tr>
             <td>Carré</td>
             <td>4 dezelfde</td>
             <td>Totaal v.d. 5 stenen</td>
-            <td class="part-2">{{ determine4OAK }}</td>
+            <td>{{ determine4OAK }}</td>
         </tr>
         <tr>
             <td>Full House</td>
             <td>2 + 3 dezelfde</td>
             <td>25 punten</td>
-            <td class="part-2">{{ handleFullHouse }}</td>
+            <td>{{ handleFullHouse }}</td>
         </tr>
         <tr>
             <td>Kleine straat</td>
             <td></td>
             <td>4 opeenvolgende nummers</td>
-            <td class="part-2">{{ handleStraight(4) }}</td>
+            <td>{{ handleStraight(4) }}</td>
         </tr>
         <tr>
             <td>Grote straat</td>
             <td></td>
             <td>5 opeenvolgende nummers</td>
-            <td class="part-2">{{ handleStraight(5) }}</td>
+            <td>{{ handleStraight(5) }}</td>
         </tr>
         <tr>
             <td>Topscore</td>
             <td>5 dezelfde</td>
             <td>50 punten</td>
-            <td class="part-2">{{ handleYahtZee }}</td>
+            <td>{{ handleYahtZee }}</td>
         </tr>
         <tr>
             <td>Change</td>
             <td>vrije keus</td>
             <td>Totaal v.d. 5 stenen</td>
-            <td class="part-2">{{ handleChance }}</td>
+            <td>{{ handleChance }}</td>
         </tr>
         <tr>
             <td>Totaal</td>
