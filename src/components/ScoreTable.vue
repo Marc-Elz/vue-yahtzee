@@ -126,7 +126,7 @@ const determine3OAK = computed(() => {
         }
     })
 
-    return found ? calculateAllEyes : 0;
+    return found ? calculateAllEyes.value : 0;
 })
 
 const determine4OAK = computed(() => {
@@ -137,7 +137,7 @@ const determine4OAK = computed(() => {
         }
     })
 
-    return found ? calculateAllEyes : 0;
+    return found ? calculateAllEyes.value : 0;
 })
 
 const handleFullHouse = computed(() => {
@@ -226,11 +226,12 @@ const handleChance = computed(() => {
 
 });
 
-// Not working yet
 const getTotalCountDown = computed(() => {
-    const part2 = document.getElementsByClassName("part-2")
-    console.log(Array.from(part2).length)
-    return Number(Array.from(part2).reduce((acc, item) => acc + (+item.textContent), 0));
+    return determine3OAK.value + determine4OAK.value +  handleFullHouse.value + handleStraight(4) + handleStraight(5) + handleYahtZee.value + handleChance.value
 });
+
+const getFullScore = computed(() => {
+    return getTotalCountDown.value + calculateAllEyes.value
+})
 
 </script>
