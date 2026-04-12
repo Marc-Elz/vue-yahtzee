@@ -1,8 +1,4 @@
-Issue 1: Word de computed code elke keer uitgevoerd als ik het in andere functies refereer? 
-of omdat het dice object niet veranderd geeft het dan telkens ditzelfde object terug?
-Moet voorkomen dat ik telkens iets bereken zonder dat de variabelen veranderd zijn.
-
-Issue 2: Css van tables kan beter met minimale veranderingen
+Issue 4: Css van tables kan beter met minimale veranderingen
 
 Issue 3: Dobbelstenen op het begin leeg laten. N/A
 
@@ -10,3 +6,25 @@ Jasper end of day tip:
 Object.entries word vaak herhaald. Ik moet kijken of ik dat kan vermijden. 
 
 Als ik er niet zelf uitkom, tip om datde volgende keer maar vragen
+
+
+Voor de werkweek issues:
+
+Issue 1:
+Ik gebruik Object.entries voor alle problemen zelfs als ik keys niet nodig heb. ipv kan ik .values of .keys gebruiken waarnodig
+
+Issue 2: 
+Hoe variabelen aan computed properties geven?
+const computedFunction = computed(() => (var) => {})
+const computedProp = computed(() =>{})
+
+Ik snap denk ik niet goed genoeg, waarom moeten deze functies computed zijn. Maar in welk geval hoeft het niet computed te zijn?
+> Ik denk dat ik het nu met getTotalCountdown beter begrijp. aangezien je .value op die properities kan doen maar niet op functies. Door .value te refereren voorkom je dat de functie opnieuw moet runnen.
+
+Ik moet beter opletten dat ik niet de reference van een property zelf return. maar de reference.value
+
+
+Wat ik moet doen:
+1. object.entries vervangen door directere maniereen om de functies op te lossen.
+2. Vraag aan IT begeleider uitleg wanneer values computed moeten zijn. En opheldering waarom. Kan ik beter functies als handleStraight aanpassen naar 2 duplicate functies, of computed property maken met parameters, of gewoon als functies.
+Ik wil de tradeoffs begrijpen.
