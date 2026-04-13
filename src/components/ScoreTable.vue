@@ -12,7 +12,7 @@
         </tr>
     
 
-        <tr v-for="(counter, index) in countDices" :key="index">
+        <tr v-for="(counter, index) in diceCount" :key="index">
             <td>{{ index }}</td>
             <td></td>
             <td>Totaal van alle {{ index }}</td>
@@ -97,7 +97,7 @@
 import {ref, computed} from 'vue';
 
 const dice = defineModel();
-const countDices = computed(() => {
+const diceCount = computed(() => {
     let count = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0};
     dice.value.forEach(die => {
         count[die]++
@@ -106,11 +106,11 @@ const countDices = computed(() => {
 });
 
 const calculateEyes = (index) => {
-    return countDices.value[index] * index;
+    return diceCount.value[index] * index;
 };
 
 const calculateAllEyes = computed(() => {
-    let sum = Object.entries(countDices.value).reduce((acc, [key, value]) => {
+    let sum = Object.entries(diceCount.value).reduce((acc, [key, value]) => {
         return acc + (key * value);
     }, 0);
     return sum;
@@ -119,7 +119,7 @@ const calculateAllEyes = computed(() => {
 // Nog niet blij met de duplicatecode, maar probleem voor later
 const determine3OAK = computed(() => {
     let found = false
-    Object.values(countDices.value).forEach((value) => {
+    Object.values(diceCount.value).forEach((value) => {
         if(value === 3){
             found = true;
         }
@@ -130,7 +130,7 @@ const determine3OAK = computed(() => {
 
 const determine4OAK = computed(() => {
     let found = false
-    Object.values(countDices.value).forEach((value) => {
+    Object.values(diceCount.value).forEach((value) => {
         if(value === 4){
             found = true;
         }
@@ -144,7 +144,7 @@ const handleFullHouse = computed(() => {
     let threePair = false;
     let twoPair = false;
 
-    Object.values(countDices.value).forEach((value) => {
+    Object.values(diceCount.value).forEach((value) => {
         if (value === 3) {
             threePair = true
         }
@@ -162,7 +162,7 @@ const handleFullHouse = computed(() => {
 
 const handleStraight = (requiredSize) => {
     let uniqueDices = new Set();
-    Object.entries(countDices.value).forEach(([key, value]) => {
+    Object.entries(diceCount.value).forEach(([key, value]) => {
         if(value > 0){
             uniqueDices.add(key)
         }
@@ -207,7 +207,7 @@ const handleStraight = (requiredSize) => {
 
 const handleYahtZee = computed(() => {
     let foundYahtzee = false
-    Object.values(countDices.value).forEach((value) => {
+    Object.values(diceCount.value).forEach((value) => {
         if (value === 5) {
             foundYahtzee = true;
             return 50;
@@ -218,7 +218,7 @@ const handleYahtZee = computed(() => {
 
 const handleChance = computed(() => {
     let totalChance = 0
-    Object.entries(countDices.value).forEach(([key, value]) => {
+    Object.entries(diceCount.value).forEach(([key, value]) => {
         totalChance = totalChance + (key * value);
     });
     return totalChance
