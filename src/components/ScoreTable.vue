@@ -94,7 +94,7 @@
     </table>
 </template>
 <script setup>
-import {ref, computed} from 'vue';
+import {computed} from 'vue';
 
 const dice = defineModel();
 
@@ -134,14 +134,14 @@ const handleFullHouse = computed(() => {
     let threePair = false;
     let twoPair = false;
 
-    Object.values(diceCount.value).forEach((value) => {
-        if (value === 3) {
+    for(const key in diceCount.value) {
+        if (diceCount.value[key] === 3) {
             threePair = true
         }
-        if (value === 2) {
+        if (diceCount.value[key]  === 2) {
             twoPair = true
         }
-    })
+    }
 
     if (twoPair && threePair) {
         return 25
@@ -152,11 +152,11 @@ const handleFullHouse = computed(() => {
 
 const isAStraight = (requiredSize) => {
     let uniqueDices = new Set();
-    Object.entries(diceCount.value).forEach(([key, value]) => {
-        if(value > 0){
+    for(const key in diceCount.value){
+        if(diceCount.value[key] > 0){
             uniqueDices.add(key)
         }
-    })
+    }
 
     let orderedDices = Array.from(uniqueDices).sort();
 
@@ -189,22 +189,16 @@ const handleBigStraight = computed(() => {
 })
 
 const handleYahtZee = computed(() => {
-    let foundYahtzee = false
-    Object.values(diceCount.value).forEach((value) => {
-        if (value === 5) {
-            foundYahtzee = true;
+    for (const key in diceCount.value) {
+        if (diceCount.value[key] === 5) {
             return 50;
         }
-    })
-    return foundYahtzee ? 50 : 0;
+    }
+    return 0;
 });
 
 const handleChance = computed(() => {
-    let totalChance = 0
-    Object.entries(diceCount.value).forEach(([key, value]) => {
-        totalChance = totalChance + (key * value);
-    });
-    return totalChance
+    return calculateAllEyes.value
 
 });
 

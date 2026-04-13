@@ -4,7 +4,7 @@ import ThrownDice from './components/ThrownDice.vue';
 import {ref} from 'vue';
 
 // Better make the dice object an array
-const dice = ref([1, 1, 1, 2, 2]);
+const dice = ref([1, 3, 4, 5, 6]);
 </script>
 
 <template>
