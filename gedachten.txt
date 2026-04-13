@@ -26,5 +26,18 @@ Ik moet beter opletten dat ik niet de reference van een property zelf return. ma
 
 Wat ik moet doen:
 1. object.entries vervangen door directere maniereen om de functies op te lossen.
-2. Vraag aan IT begeleider uitleg wanneer values computed moeten zijn. En opheldering waarom. Kan ik beter functies als handleStraight aanpassen naar 2 duplicate functies, of computed property maken met parameters, of gewoon als functies.
+2. Vraag aan IT begeleider uitleg wanneer values computed moeten zijn. En opheldering waarom. Kan ik beter functies als handleStraight 
+aanpassen naar 2 duplicate functies, 
+of computed property maken met parameters, 
+of gewoon als functies.
 Ik wil de tradeoffs begrijpen.
+
+
+Learnings
+Computed properties kunnen geen properties hebben, maar ze kunnen wel functies aanroepen.
+
+Ik gebruik object.values en object.entries wanneer ik gewoon een for loop kan gebruiken. Waarom ik dat deed: het werkte bij een functie dus herapplyde ik diezelfde structuur bij meerdere
+ook al heb ik in het verleden natuurlijk met for loops in javascript geleerd, en de voorbeelden die gegeven waren gebruikten for loops. Ik had dit basisconcept niet voor ogen.
+
+Maak gebruik van het dice object wanneer die structuur beter past. De reden waarom ik dat deed was omdat ik de feedback die ik kreeg om het count object te gebruiken applyde op
+alle functies, die regel heb ik zelf in mijn hoofd gebhouden, Maar: denk voor jezelf na of het een goed idee is
