@@ -53,13 +53,13 @@
             <td>Kleine straat</td>
             <td></td>
             <td>4 opeenvolgende nummers</td>
-            <td>{{ handleStraight(4) }}</td>
+            <td>{{ handleSmallStraight }}</td>
         </tr>
         <tr>
             <td>Grote straat</td>
             <td></td>
             <td>5 opeenvolgende nummers</td>
-            <td>{{ handleStraight(5) }}</td>
+            <td>{{ handleBigStraight }}</td>
         </tr>
         <tr>
             <td>Topscore</td>
@@ -97,11 +97,14 @@
 import {ref, computed} from 'vue';
 
 const dice = defineModel();
+
 const diceCount = computed(() => {
-    let count = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0};
+    const count = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0};
+
     dice.value.forEach(die => {
         count[die]++
     })
+
     return count;
 });
 
@@ -109,34 +112,21 @@ const calculateEyes = (index) => {
     return diceCount.value[index] * index;
 };
 
-const calculateAllEyes = computed(() => {
-    let sum = Object.entries(diceCount.value).reduce((acc, [key, value]) => {
-        return acc + (key * value);
-    }, 0);
-    return sum;
-});
+const calculateAllEyes = computed(() => dice.value.reduce((acc, item) => acc + item, 0));
 
-// Nog niet blij met de duplicatecode, maar probleem voor later
+const isOAK = (requiredSize) => {
+    for (const key in diceCount.value) {
+        if(diceCount.value[key] === requiredSize) return true
+    }
+    return false
+}
+
 const determine3OAK = computed(() => {
-    let found = false
-    Object.values(diceCount.value).forEach((value) => {
-        if(value === 3){
-            found = true;
-        }
-    })
-
-    return found ? calculateAllEyes.value : 0;
+    return isOAK(3) ? calculateAllEyes.value : 0;
 })
 
 const determine4OAK = computed(() => {
-    let found = false
-    Object.values(diceCount.value).forEach((value) => {
-        if(value === 4){
-            found = true;
-        }
-    })
-
-    return found ? calculateAllEyes.value : 0;
+    return isOAK(4) ? calculateAllEyes.value : 0;
 })
 
 const handleFullHouse = computed(() => {
@@ -160,7 +150,7 @@ const handleFullHouse = computed(() => {
     return 0;
 })
 
-const handleStraight = (requiredSize) => {
+const isAStraight = (requiredSize) => {
     let uniqueDices = new Set();
     Object.entries(diceCount.value).forEach(([key, value]) => {
         if(value > 0){
@@ -187,23 +177,16 @@ const handleStraight = (requiredSize) => {
         }
     }
 
-    switch (straightCount) {
-        case 4:
-            if(requiredSize === 4){
-                return 30
-            }
-            return 0;
-        case 5:
-            if(requiredSize === 5){
-                console.log(straightCount)
-                return 40
-            }
-            return 0;
-        default:
-            return 0;
-    }
-
+    return (straightCount === requiredSize)
 }
+
+const handleSmallStraight = computed(() => {
+    return isAStraight(4) ? 30: 0;
+})
+
+const handleBigStraight = computed(() => {
+    return isAStraight(5) ? 40: 0;
+})
 
 const handleYahtZee = computed(() => {
     let foundYahtzee = false
@@ -226,7 +209,7 @@ const handleChance = computed(() => {
 });
 
 const getTotalCountDown = computed(() => {
-    return determine3OAK.value + determine4OAK.value +  handleFullHouse.value + handleStraight(4) + handleStraight(5) + handleYahtZee.value + handleChance.value
+    return determine3OAK.value + determine4OAK.value +  handleFullHouse.value + handleSmallStraight.value + handleBigStraight.value + handleYahtZee.value + handleChance.value
 });
 
 const getFullScore = computed(() => {
